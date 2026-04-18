@@ -11,7 +11,7 @@ const microtaskQueue = new TaskQueue("microtask");
 const callbackQueue = new TaskQueue("callback");
 
 const scheduler = new Scheduler(microtaskQueue, callbackQueue);
-const log = [];
+const log = []; 
 
 const controller = new SimulatorController(callStack, scheduler, log);
 const eventLoop = new EventLoop(callStack, scheduler);
