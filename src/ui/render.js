@@ -1,21 +1,24 @@
-import { renderStack } from './components/stackView.js';
-import { renderQueue } from './components/queueView.js';
-import { renderControls } from './components/controls.js';
-import { renderLog } from './components/logView.js';
-
 export function renderAll(state) {
   document.getElementById("stack").innerHTML =
-    renderStack(state.stack);
+    `<div class="box"><h2>Call Stack</h2>${
+      state.stack.map(() => `<div class="item">fn</div>`).join("")
+    }</div>`;
 
   document.getElementById("microtask").innerHTML =
-    renderQueue("Microtask Queue", state.microtasks);
+    `<div class="box"><h2>Microtask</h2>${
+      state.microtasks.map(() => `<div class="item">task</div>`).join("")
+    }</div>`;
 
   document.getElementById("callback").innerHTML =
-    renderQueue("Callback Queue", state.callbacks);
+    `<div class="box"><h2>Callback</h2>${
+      state.callbacks.map(() => `<div class="item">task</div>`).join("")
+    }</div>`;
 
   document.getElementById("controls").innerHTML =
-    renderControls();
+    `<button id="run">Run</button>
+     <button id="step">Step</button>
+     <button id="reset">Reset</button>`;
 
   document.getElementById("logs").innerHTML =
-    renderLog(state.logs);
+    `<h2>Logs</h2>${state.logs.map(l => `<div>${l}</div>`).join("")}`;
 }
